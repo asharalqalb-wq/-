@@ -1,1 +1,588 @@
-# -
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ديوان نبيل جبر - مجموعة شعرية تضم قصائد وطنية وغزلية وحكمية على مختلف البحور الشعرية">
+    <meta name="keywords" content="شعر عربي، نبيل جبر، ديوان شعر، قصائد، شعر وطني، شعر غزلي">
+    <meta name="author" content="نبيل جبر">
+    <meta property="og:title" content="ديوان نبيل جبر">
+    <meta property="og:description" content="ديوان شعري يضم قصائد وطنية وغزلية وحكمية">
+    <meta property="og:type" content="website">
+    <title>ديوان نبيل جبر | مجموعة شعرية</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #f9f5f0;
+            --bg-secondary: #fff8f0;
+            --text-primary: #2d1810;
+            --text-secondary: #5a4a3a;
+            --accent-gold: #c9a961;
+            --accent-copper: #b87333;
+            --accent-sage: #8a9a7b;
+            --border-color: #d4c4b0;
+            --shadow: rgba(45, 24, 16, 0.1);
+            --shadow-heavy: rgba(45, 24, 16, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Scheherazade New', serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 2;
+            overflow-x: hidden;
+        }
+
+        .grain-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--accent-copper) 0%, var(--accent-gold) 100%);
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow-heavy);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-20px, 20px) rotate(5deg); }
+        }
+
+        h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .subtitle {
+            font-family: 'Amiri', serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: rgba(255,255,255,0.95);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-family: 'Amiri', serif;
+            font-size: 1.1rem;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            background: rgba(255,255,255,0.95);
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.8);
+            background: #fff;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+
+        #searchInput::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent-copper);
+            font-size: 1.3rem;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .filter-tag {
+            padding: 0.5rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 25px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Amiri', serif;
+            font-size: 0.95rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            background: rgba(255,255,255,0.95);
+            color: var(--accent-copper);
+            border-color: rgba(255,255,255,0.8);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .poems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .poem-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInScale 0.6s ease-out both;
+        }
+
+        .poem-card:nth-child(1) { animation-delay: 0.1s; }
+        .poem-card:nth-child(2) { animation-delay: 0.15s; }
+        .poem-card:nth-child(3) { animation-delay: 0.2s; }
+        .poem-card:nth-child(4) { animation-delay: 0.25s; }
+        .poem-card:nth-child(5) { animation-delay: 0.3s; }
+        .poem-card:nth-child(6) { animation-delay: 0.35s; }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .poem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), var(--accent-copper));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .poem-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .poem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--shadow-heavy);
+            border-color: var(--accent-gold);
+        }
+
+        .poem-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.8rem;
+            color: var(--accent-copper);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .poem-meta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .poem-tag {
+            background: var(--accent-sage);
+            color: #fff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .poem-description {
+            font-family: 'Amiri', serif;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .poem-preview {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.1rem;
+            line-height: 2.2;
+            color: var(--text-primary);
+            border-right: 3px solid var(--accent-gold);
+            padding-right: 1rem;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .poem-card.expanded {
+            grid-column: 1 / -1;
+        }
+
+        .poem-full-text {
+            display: none;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed var(--border-color);
+        }
+
+        .poem-card.expanded .poem-full-text {
+            display: block;
+            animation: expandText 0.5s ease-out;
+        }
+
+        @keyframes expandText {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 5000px;
+            }
+        }
+
+        .poem-verse {
+            margin-bottom: 2rem;
+        }
+
+        .poem-line {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.3rem;
+            line-height: 2.5;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            padding-right: 2rem;
+        }
+
+        .close-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            padding: 0.8rem 2rem;
+            background: var(--accent-copper);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Amiri', serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: var(--accent-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow);
+        }
+
+        .about-section {
+            background: linear-gradient(135deg, rgba(201,169,97,0.1) 0%, rgba(138,154,123,0.1) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section::before {
+            content: '✦';
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0.2;
+        }
+
+        .about-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 2.5rem;
+            color: var(--accent-copper);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .about-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            background: var(--accent-copper);
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            font-family: 'Amiri', serif;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            font-family: 'Amiri', serif;
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .poems-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            header {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .poem-card.expanded {
+                grid-column: 1;
+            }
+
+            .about-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .filter-tags {
+                gap: 0.5rem;
+            }
+
+            .filter-tag {
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media print {
+            .search-container,
+            .filter-tags,
+            .close-btn {
+                display: none;
+            }
+            
+            .poem-card {
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="grain-overlay"></div>
+    
+    <header>
+        <h1>ديوان نبيل جبر</h1>
+        <p class="subtitle">✦ مجموعة شعرية ✦</p>
+        
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="ابحث في القصائد..."
+                autocomplete="off"
+            >
+        </div>
+
+        <div class="filter-tags">
+            <div class="filter-tag active" data-category="all">جميع القصائد</div>
+            <div class="filter-tag" data-category="وطنية">وطنية</div>
+            <div class="filter-tag" data-category="غزلية">غزلية</div>
+            <div class="filter-tag" data-category="حكمية">حكمية</div>
+            <div class="filter-tag" data-category="تأملية">تأملية</div>
+            <div class="filter-tag" data-category="رثائية">رثائية</div>
+            <div class="filter-tag" data-category="روحية">روحية</div>
+        </div>
+    </header>
+
+    <main>
+        <div class="about-section">
+            <h2 class="about-title">عن الشاعر</h2>
+            <div class="about-text">
+                <p>هو شاعرٌ آمنَ أن الكلمةَ قدرٌ، وأن الحرفَ أمانةٌ تُحمل كما يُحمل الضوء في ليلٍ طويل. نشأ بين تأمّلٍ وصمت، فكان يسمع في خفقة القلب إيقاع بحرٍ، ويرى في تفاصيل الحياة صورًا تنتظر أن تُصاغ شعرًا. لم يكن الشعر عنده ترفًا لغويًا، بل ضرورةً روحية؛ إذا ضاقت به الأيام كتب، وإذا اتّسع الفرح غنّى، وإذا اشتدّ الألم ناجى الورق حتى يلين.</p>
+
+                <p>يتنقّل في بحور الشعر كما يتنقّل المسافر بين الفصول؛ في الكامل عزّة، وفي الطويل شجن، وفي البسيط حكمة، وفي الرمل رقّة، وفي المتقارب نبضٌ متسارع كقلب عاشق. يؤمن أن القافية ليست قيدًا بل جناح، وأن الوزن ليس إطارًا جامدًا بل موسيقى تُهذّب المعنى وتمنحه هيبة البقاء.</p>
+
+                <p>قصائده مرآةُ روحه: وطنٌ يشتعل فخرًا، وحبٌّ يفيض كبرياءً، وحكمةٌ تتقطّر من تعب التجربة، وإيمانٌ يتّكئ عليه حين تعصف الريح.</p>
+
+                <p>هو شاعرٌ يرى أن الشعر رسالة قبل أن يكون مهارة، وأن الجمال لا يكتمل إلا إذا حمل صدقًا. يكتب ليوقظ، ليواسي، ليقاوم، وليزرع في القلب نافذةً نحو غدٍ أكثر نورًا. وفي كل بيتٍ يخطّه، يترك شيئًا من نفسه… ليبقى صوته شاهدًا على زمنٍ مرّ، وروحٍ آمنت أن الكلمة حياة. ✨</p>
+            </div>
+        </div>
+
+        <div class="poems-grid" id="poemsGrid"></div>
+        <div class="no-results" id="noResults">لم يتم العثور على قصائد مطابقة للبحث</div>
+    </main>
+
+    <footer>
+        <p>© 2024 ديوان نبيل جبر - جميع الحقوق محفوظة</p>
+    </footer>
+
+    <script>
+        const poems = [
+            {
+                title: "راية المجد",
+                category: "وطنية",
+                meter: "الكامل",
+                description: "قصيدة وطنية على بحر الكامل، تتغنى بعزة الأرض وكرامة الإنسان، وتُجسّد علاقة الروح بالوطن كعلاقة الدم بالقلب.",
+                verses: [
+                    ["وطني على كتفي أُشيِّدُ حلـمَهُ", "وأغرسُ الإيمانَ في الأيّـامِ"],
+                    ["أمشي وفي عينيكَ فجرُ حضارةٍ", "وأضمُّ تاريخًا من الأعوامِ"],
+                    ["إن ضاقَ دربُ العزِّ كنتُ لواءَهُ", "وأكونُ سيفَ الحقِّ في الإقدامِ"],
+                    ["لا تنحني قممُ الجبالِ لعارضٍ", "وكذا الرجالُ تُقاسُ بالآلامِ"],
+                    ["وطني إذا نادى الكرامةَ ثائرًا", "لبّيتُهُ بدمي وبالأقلامِ"]
+                ]
+            },
+            {
+                title: "بين يديكِ العمر",
+                category: "غزلية",
+                meter: "الرمل",
+                description: "قصيدة غزلية على بحر الرمل، تتناول الحبّ بوصفه خلاصًا من الوحدة ونافذةً للضوء في عتمة الأيام.",
+                verses: [
+                    ["يا سنا العمرِ إذا لاحَ وجهُكْ", "كيف لي أن أستفيقَ وضيُّكْ؟"],
+                    ["كلما مرَّ نسيمٌ شبيهٌ", "بعبيرِ الحلمِ قبَّل خدُّكْ"],
+                    ["أنتِ أنشودةُ قلبي إذا ما", "ضاقَ صدري واعتراه شكوكُكْ"],
+                    ["في يديكِ العمرُ ينمو ربيعًا", "ويذوبُ البردُ عند دفوكْ"],
+                    ["فخذيني بين كفَّيكِ وعدًا", "أن يكونَ الهوى في دُروبُكْ"]
+                ]
+            },
+            {
+                title: "حكمة الغروب",
+                category: "حكمية",
+                meter: "البسيط",
+                description: "قصيدة تأملية على بحر البسيط، تصف لحظة الغروب كدرسٍ صامت في الفناء والبقاء.",
+                verses: [
+                    ["يمضي النهارُ كما تمضي بنا العُمُرُ", "ولا يُعيدُ الذي قد فاتَهُ القدرُ"],
+                    ["الشمسُ تغربُ كي تعلو منازلُها", "وفي الأفولِ سرابٌ بعدهُ ظُهُرُ"],
+                    ["يا صاحِ خُذ من ليالي الدهرِ حكمتَها", "فالوقتُ يمضي ولا تبقى سوى الأثرُ"],
+                    ["ازرعْ لنفسكَ خيرًا في مسالكِها", "فالزرعُ يحصدهُ إنسانُهُ البشرُ"],
+                    ["واصبرْ فإنَّ الليالي لو تطاولَتْ", "فالصبحُ يولدُ مهما طالَ مُنتظرُ"]
+                ]
+            },
+            {
+                title: "أنين المسافات",
+                category: "غزلية",
+                meter: "الطويل",
+                description: "قصيدة وجدانية على بحر الطويل، تعبّر عن شوقٍ يزداد كلما ابتعدت المسافات.",
+                verses: [
+                    ["أيا ليلُ هل تُخفي النجومُ عناقَها", "أمِ البعدُ في صدرِ المحبِّ احتراقُ؟"],
+                    ["أُفتِّشُ في صوتِ الرياحِ لعلَّها", "تجيءُ بخبرٍ فيه بعضُ اشتياقُ"],
+                    ["تمُرُّ الليالي والحنينُ مُقيَّدٌ", "كأنَّ ضلوعي حول قلبي نطاقُ"],
+                    ["أمدُّ يدي نحو السماءِ لعلَّها", "تُعيدُ الذي في القلبِ منه انطلاقُ"],
+                    ["فإن عدتِ يومًا والهوى متبسِّمٌ", "سأكتبُ أنَّ الصبرَ كان وثاقُ"]
+                ]
+            },
+            {
+                title: "نشيد العدل",
+                category: "وطنية",
+                meter: "الوافر",
+                description: "قصيدة حماسية على بحر الوافر، تتحدث عن الكرامة والحق في مواجهة الظلم.",
+                verses: [
+                    ["سأرفعُ رايةَ الحقِّ اعتدالًا", "وأمضي لا أُساومُ في المجالِ"],
+                    ["إذا ما الظلمُ حاولَ أن يُطِلَّ", "أُقابلُهُ بثورةِ ذي الجلالِ"],
+                    ["أنا الحرُّ الذي لا يستكينُ", "ولا أرضى بقيودِ الاحتمالِ"],
+                    ["أشقُّ الليلَ إن طالَ الدجى", "ليولدَ صبحُنا فوق التلالِ"],
+                    ["وإن ضاقتْ بنا الدنيا جميعًا", "ففي الإيمانِ متسعُ النضالِ"]
+                ]
+            },
+            {
+                title: "خُطى الفجر",
+                category: "حكمية",
+                meter: "المتقارب",
+                description: "قصيدة على بحر المتقارب، تصوّر الأمل كمسافرٍ لا يتعب، يطرق أبواب الروح كلما أظلمت الدروب.",
+                verses: [
+                    ["إذا الليلُ أرخى ستورَ السهرْ", "وأدمى القلوبَ بطولِ الف# -
