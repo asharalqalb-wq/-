@@ -26,6 +26,112 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     
+    <!-- 🎯 Structured Data - Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Person",
+                "@id": "https://ash3ar-alqalb.github.io/#person",
+                "name": "نبيل جبر",
+                "alternateName": ["Nabil Jabr", "نبيل جبر - أشعار القلب"],
+                "description": "شاعر عربي يكتب الشعر الفصيح في بحوره المختلفة، تخصصه القصائد الوطنية والغزلية والحكمية",
+                "url": "https://ash3ar-alqalb.github.io/",
+                "image": "https://ash3ar-alqalb.github.io/gc7ibu.jpg",
+                "sameAs": [
+                    "https://www.instagram.com/ash3ar_alqalb/"
+                ],
+                "jobTitle": "شاعر",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "ديوان أشعار القلب"
+                },
+                "knowsAbout": ["الشعر العربي الفصيح", "الأدب العربي", "البحور الشعرية", "القصيدة الوطنية", "القصيدة الغزلية"],
+                "nationality": "عربي"
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://ash3ar-alqalb.github.io/#website",
+                "name": "ديوان نبيل جبر - أشعار القلب",
+                "url": "https://ash3ar-alqalb.github.io/",
+                "description": "موقع ديوان شعري يضم قصائد نبيل جبر في البحور الكامل والطويل والبسيط والرمل والمتقارب والوافر",
+                "publisher": {
+                    "@id": "https://ash3ar-alqalb.github.io/#person"
+                },
+                "inLanguage": "ar",
+                "copyrightHolder": {
+                    "@id": "https://ash3ar-alqalb.github.io/#person"
+                }
+            },
+            {
+                "@type": "CollectionPage",
+                "@id": "https://ash3ar-alqalb.github.io/#collection",
+                "url": "https://ash3ar-alqalb.github.io/",
+                "name": "ديوان نبيل جبر - مجموعة شعرية",
+                "description": "مجموعة شعرية متكاملة للشاعر نبيل جبر تضم 42 قصيدة في مواضيع وطنية وغزلية وحكمية وتأملية",
+                "isPartOf": {
+                    "@id": "https://ash3ar-alqalb.github.io/#website"
+                },
+                "mainEntity": {
+                    "@type": "ItemList",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "item": {
+                                "@type": "CreativeWork",
+                                "name": "راية المجد",
+                                "genre": "قصيدة وطنية",
+                                "inLanguage": "ar"
+                            }
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "item": {
+                                "@type": "CreativeWork",
+                                "name": "بين يديكِ العمر",
+                                "genre": "قصيدة غزلية",
+                                "inLanguage": "ar"
+                            }
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 3,
+                            "item": {
+                                "@type": "CreativeWork",
+                                "name": "حكمة الغروب",
+                                "genre": "قصيدة حكمية",
+                                "inLanguage": "ar"
+                            }
+                        }
+                    ]
+                },
+                "author": {
+                    "@id": "https://ash3ar-alqalb.github.io/#person"
+                }
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": "https://ash3ar-alqalb.github.io/#breadcrumb",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "الرئيسية",
+                        "item": "https://ash3ar-alqalb.github.io/"
+                    }
+                ]
+            }
+        ]
+    }
+    </script>
+    
+    <!-- Structured Data للقصائد الفردية (تُضاف ديناميكياً) -->
+    <script type="application/ld+json" id="poems-schema">
+    </script>
+    
     <style>
         :root {
             --bg-primary: #f9f5f0;
@@ -223,23 +329,28 @@
         </div>
     </header>
     <main>
-        <div class="about-section">
+        <div class="about-section" itemscope itemtype="https://schema.org/Person">
             <h2 class="about-title">عن الشاعر</h2>
-            <img src="gc7ibu.jpg" alt="نبيل جبر - أشعار القلب" style="width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto 2rem; object-fit: cover; border: 4px solid var(--accent-gold); box-shadow: 0 8px 24px rgba(0,0,0,0.15);" onerror="this.style.display='none'">
+            <img src="gc7ibu.jpg" alt="نبيل جبر - أشعار القلب" style="width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto 2rem; object-fit: cover; border: 4px solid var(--accent-gold); box-shadow: 0 8px 24px rgba(0,0,0,0.15);" onerror="this.style.display='none'" itemprop="image">
             <div class="about-text">
-                <p>هو شاعرٌ آمنَ أن الكلمةَ قدرٌ، وأن الحرفَ أمانةٌ تُحمل كما يُحمل الضوء في ليلٍ طويل. نشأ بين تأمّلٍ وصمت، فكان يسمع في خفقة القلب إيقاع بحرٍ، ويرى في تفاصيل الحياة صورًا تنتظر أن تُصاغ شعرًا.</p>
+                <p itemprop="description">هو شاعرٌ آمنَ أن الكلمةَ قدرٌ، وأن الحرفَ أمانةٌ تُحمل كما يُحمل الضوء في ليلٍ طويل. نشأ بين تأمّلٍ وصمت، فكان يسمع في خفقة القلب إيقاع بحرٍ، ويرى في تفاصيل الحياة صورًا تنتظر أن تُصاغ شعرًا.</p>
                 <p>يتنقّل في بحور الشعر كما يتنقّل المسافر بين الفصول؛ في الكامل عزّة، وفي الطويل شجن، وفي البسيط حكمة، وفي الرمل رقّة، وفي المتقارب نبضٌ متسارع كقلب عاشق.</p>
                 <p>قصائده مرآةُ روحه: وطنٌ يشتعل فخرًا، وحبٌّ يفيض كبرياءً، وحكمةٌ تتقطّر من تعب التجربة، وإيمانٌ يتّكئ عليه حين تعصف الريح.</p>
                 <p>هو شاعرٌ يرى أن الشعر رسالة قبل أن يكون مهارة، وأن الجمال لا يكتمل إلا إذا حمل صدقًا. يكتب ليوقظ، ليواسي، ليقاوم، وليزرع في القلب نافذةً نحو غدٍ أكثر نورًا. ✨</p>
             </div>
             
             <div class="social-links">
-                <a href="https://www.instagram.com/ash3ar_alqalb/" target="_blank" class="social-link" title="تابعني على إنستغرام: نبيل جبر أشعار القلب">
-                    📷 إنستغرام: @ash3ar_alqalb
+                <a href="https://www.instagram.com/ash3ar_alqalb/" target="_blank" class="social-link" title="تابعني على إنستغرام: نبيل جبر أشعار القلب" itemprop="sameAs">
+                    📷 إنستغرام: <span itemprop="name">@ash3ar_alqalb</span>
                 </a>
             </div>
+            
+            <meta itemprop="name" content="نبيل جبر">
+            <meta itemprop="alternateName" content="Nabil Jabr">
+            <meta itemprop="jobTitle" content="شاعر">
+            <meta itemprop="nationality" content="عربي">
         </div>
-        <div class="poems-grid" id="poemsGrid"></div>
+        <div class="poems-grid" id="poemsGrid" itemscope itemtype="https://schema.org/CollectionPage"></div>
     </main>
     
     <button class="refresh-btn" id="refreshBtn" onclick="manualRefresh()" title="تحديث الموقع (Ctrl+R)">🔄</button>
@@ -253,7 +364,7 @@
     </footer>
     
 <script>
-// بيانات القصائد - تم التأكد من صحة البنية
+// بيانات القصائد
 const poems = [
     {
         title: "راية المجد",
@@ -915,6 +1026,9 @@ function renderPoems(poemsToRender) {
     if (indicator) {
         indicator.innerHTML = `الإصدار: 2026-03-01 20:49:48 | ${poemsToRender.length} قصيدة`;
     }
+    
+    // تحديث Schema للقصائد المعروضة
+    updatePoemsSchema(poemsToRender);
 }
 
 function togglePoem(card) {
@@ -981,6 +1095,40 @@ function filterPoems() {
     }
     
     renderPoems(filtered);
+}
+
+// تحديث Structured Data للقصائد
+function updatePoemsSchema(poemsToRender) {
+    const schemaScript = document.getElementById('poems-schema');
+    if (!schemaScript) return;
+    
+    const poemsSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": poemsToRender.map((poem, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "CreativeWork",
+                "name": poem.title,
+                "author": {
+                    "@id": "https://ash3ar-alqalb.github.io/#person"
+                },
+                "genre": `قصيدة ${poem.category}`,
+                "inLanguage": "ar",
+                "description": poem.description,
+                "additionalProperty": [
+                    {
+                        "@type": "PropertyValue",
+                        "name": "البحر",
+                        "value": poem.meter
+                    }
+                ]
+            }
+        }))
+    };
+    
+    schemaScript.textContent = JSON.stringify(poemsSchema, null, 2);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
