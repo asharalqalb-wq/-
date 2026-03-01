@@ -2,16 +2,28 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <!-- إصلاحات التخزين المؤقت الدائمة -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta name="version" content="20260226203954">
+    <meta name="version" content="20260301204948">
+    
+    <title>نبيل جبر أشعار القلب | ديوان نبيل جبر - مجموعة شعرية</title>
+    <meta name="description" content="ديوان نبيل جبر - أشعار القلب: مجموعة شعرية للشاعر نبيل جبر (@asharalqalb) تضم 42 قصيدة وطنية وغزلية وحكمية. تابعني على إنستغرام: نبيل جبر أشعار القلب">
+    <meta name="keywords" content="نبيل جبر, أشعار القلب, ديوان نبيل جبر, شعر عربي, قصائد, asharalqalb">
+    <meta name="author" content="نبيل جبر | أشعار القلب">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://asharalqalb-wq.github.io/-/">
+    <meta property="og:title" content="نبيل جبر أشعار القلب | ديوان شعري">
+    <meta property="og:description" content="42 قصيدة وطنية وغزلية وحكمية للشاعر نبيل جبر">
+    
+    <link rel="canonical" href="https://asharalqalb-wq.github.io/-/">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>?v=20260301204948">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ديوان نبيل جبر | مجموعة شعرية</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
     
     <style>
@@ -61,7 +73,18 @@
         
         header { background: linear-gradient(135deg, var(--accent-copper) 0%, var(--accent-gold) 100%); padding: 4rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; box-shadow: 0 4px 20px var(--shadow-heavy); }
         h1 { font-family: 'Aref Ruqaa', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); color: #fff; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-        .subtitle { font-family: 'Amiri', serif; font-size: clamp(1rem, 3vw, 1.5rem); color: rgba(255,255,255,0.95); margin-bottom: 2rem; }
+        .subtitle { font-family: 'Amiri', serif; font-size: clamp(1rem, 3vw, 1.5rem); color: rgba(255,255,255,0.95); margin-bottom: 1rem; }
+        .author-tag { 
+            font-family: 'Amiri', serif; 
+            font-size: 1.1rem; 
+            color: rgba(255,255,255,0.9); 
+            background: rgba(255,255,255,0.2); 
+            padding: 0.5rem 1.5rem; 
+            border-radius: 25px; 
+            display: inline-block; 
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
         .search-container { max-width: 600px; margin: 0 auto; position: relative; }
         #searchInput { width: 100%; padding: 1rem 3rem 1rem 1.5rem; font-family: 'Amiri', serif; font-size: 1.1rem; border: 2px solid rgba(255,255,255,0.3); border-radius: 50px; background: rgba(255,255,255,0.95); color: var(--text-primary); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .search-icon { position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); color: var(--accent-copper); font-size: 1.3rem; }
@@ -95,6 +118,30 @@
         .about-title { font-family: 'Aref Ruqaa', serif; font-size: 2.5rem; color: var(--accent-copper); margin-bottom: 1.5rem; text-align: center; }
         .about-text { font-family: 'Amiri', serif; font-size: 1.2rem; line-height: 2.2; color: var(--text-primary); text-align: justify; }
         .about-text p { margin-bottom: 1.5rem; }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .social-link {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Amiri', serif;
+            font-size: 1rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .social-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
         
         .refresh-btn {
             position: fixed;
@@ -138,18 +185,21 @@
         .version-indicator:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
         
         footer { background: var(--accent-copper); color: #fff; text-align: center; padding: 2rem; margin-top: 4rem; font-family: 'Amiri', serif; }
+        footer a { color: var(--accent-gold); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
         
         @media (max-width: 768px) { 
             .poems-grid { grid-template-columns: 1fr; gap: 1.5rem; } 
             .poem-card.expanded { grid-column: 1; }
             .refresh-btn { bottom: 1rem; left: 1rem; width: 45px; height: 45px; font-size: 1.2rem; }
             .version-indicator { bottom: 1rem; right: 1rem; font-size: 0.75rem; padding: 0.4rem 0.8rem; }
+            .social-links { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
     <div class="update-bar" id="updateBar">
-        <span>🌟 يوجد تحديث جديد!</span>
+        <span>🌟 يوجد تحديث جديد للديوان!</span>
         <button onclick="forceRefresh()">تحديث الآن</button>
         <button onclick="dismissUpdate()" style="background: transparent; color: white; border: 1px solid white;">لاحقاً</button>
     </div>
@@ -157,6 +207,7 @@
     <header>
         <h1>ديوان نبيل جبر</h1>
         <p class="subtitle">✦ مجموعة شعرية ✦</p>
+        <div class="author-tag">📝 نبيل جبر | أشعار القلب 📖</div>
         <div class="search-container">
             <span class="search-icon">🔍</span>
             <input type="text" id="searchInput" placeholder="ابحث في القصائد..." autocomplete="off">
@@ -174,24 +225,35 @@
     <main>
         <div class="about-section">
             <h2 class="about-title">عن الشاعر</h2>
-            <img src="gc7ibu.jpg" alt="نبيل جبر" style="width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto 2rem; object-fit: cover; border: 4px solid var(--accent-gold); box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
+            <img src="gc7ibu.jpg" alt="نبيل جبر - أشعار القلب" style="width: 200px; height: 200px; border-radius: 50%; display: block; margin: 0 auto 2rem; object-fit: cover; border: 4px solid var(--accent-gold); box-shadow: 0 8px 24px rgba(0,0,0,0.15);">
             <div class="about-text">
                 <p>هو شاعرٌ آمنَ أن الكلمةَ قدرٌ، وأن الحرفَ أمانةٌ تُحمل كما يُحمل الضوء في ليلٍ طويل. نشأ بين تأمّلٍ وصمت، فكان يسمع في خفقة القلب إيقاع بحرٍ، ويرى في تفاصيل الحياة صورًا تنتظر أن تُصاغ شعرًا.</p>
                 <p>يتنقّل في بحور الشعر كما يتنقّل المسافر بين الفصول؛ في الكامل عزّة، وفي الطويل شجن، وفي البسيط حكمة، وفي الرمل رقّة، وفي المتقارب نبضٌ متسارع كقلب عاشق.</p>
                 <p>قصائده مرآةُ روحه: وطنٌ يشتعل فخرًا، وحبٌّ يفيض كبرياءً، وحكمةٌ تتقطّر من تعب التجربة، وإيمانٌ يتّكئ عليه حين تعصف الريح.</p>
                 <p>هو شاعرٌ يرى أن الشعر رسالة قبل أن يكون مهارة، وأن الجمال لا يكتمل إلا إذا حمل صدقًا. يكتب ليوقظ، ليواسي، ليقاوم، وليزرع في القلب نافذةً نحو غدٍ أكثر نورًا. ✨</p>
             </div>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/asharalqalb/" target="_blank" class="social-link" title="تابعني على إنستغرام: نبيل جبر أشعار القلب">
+                    📷 إنستغرام: @asharalqalb
+                </a>
+            </div>
         </div>
         <div class="poems-grid" id="poemsGrid"></div>
     </main>
     
     <button class="refresh-btn" id="refreshBtn" onclick="manualRefresh()" title="تحديث الموقع (Ctrl+R)">🔄</button>
-    <div class="version-indicator" id="versionIndicator" onclick="showVersionInfo()" title="اضغط للمزيد">الإصدار: 2026-02-26</div>
+    <div class="version-indicator" id="versionIndicator" onclick="showVersionInfo()" title="اضغط للمزيد">الإصدار: 2026-03-01 20:49:48</div>
     
-    <footer><p>© 2024 ديوان نبيل جبر - جميع الحقوق محفوظة</p></footer>
+    <footer>
+        <p>© 2024 ديوان نبيل جبر - أشعار القلب</p>
+        <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+            تابعني على إنستغرام: <a href="https://www.instagram.com/asharalqalb/" target="_blank">@asharalqalb</a>
+        </p>
+    </footer>
     
 <script>
-const SITE_VERSION = "20260226203954";
+const SITE_VERSION = "20260301204948";
 const CACHE_NAME = 'diwan-cache-v' + SITE_VERSION;
 
 if ('serviceWorker' in navigator) {
@@ -250,7 +312,7 @@ function manualRefresh() {
 }
 
 function showVersionInfo() {
-    alert(`📊 الإصدار: ${SITE_VERSION}\\n📚 عدد القصائد: ${poems.length}\\n💡 اضغط Ctrl+R للتحديث`);
+    alert(`📊 الإصدار: ${SITE_VERSION}\n📚 عدد القصائد: ${poems.length}\n💡 اضغط Ctrl+R للتحديث\n📷 إنستغرام: @asharalqalb`);
 }
 
 window.onpageshow = e => { if (e.persisted) window.location.reload(); };
@@ -341,18 +403,16 @@ function renderPoems(poemsToRender) {
     
     const indicator = document.getElementById('versionIndicator');
     if (indicator) {
-        indicator.innerHTML = `الإصدار: 2026-02-26 | ${poemsToRender.length} قصيدة`;
+        indicator.innerHTML = `الإصدار: 2026-03-01 20:49:48 | ${poemsToRender.length} قصيدة`;
     }
 }
 
 function togglePoem(card) {
     const wasExpanded = card.classList.contains('expanded');
-    
     document.querySelectorAll('.poem-card').forEach(c => {
         c.classList.remove('expanded');
         c.style.gridColumn = '';
     });
-    
     if (!wasExpanded) {
         card.classList.add('expanded');
         card.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
@@ -360,8 +420,7 @@ function togglePoem(card) {
 }
 
 function closePoem(button) {
-    const card = button.closest('.poem-card');
-    card.classList.remove('expanded');
+    button.closest('.poem-card').classList.remove('expanded');
 }
 
 const searchInput = document.getElementById('searchInput');
@@ -416,9 +475,9 @@ function filterPoems() {
 
 document.addEventListener('DOMContentLoaded', function() {
     renderPoems(poems);
-    console.log('%c✅ ديوان نبيل جبر', 'font-size: 20px; font-weight: bold; color: #b87333;');
+    console.log('%c✅ ديوان نبيل جبر - أشعار القلب', 'font-size: 20px; font-weight: bold; color: #b87333;');
     console.log('%c📊 عدد القصائد: ' + poems.length, 'font-size: 14px; color: #5a4a3a;');
-    console.log('%c💡 اضغط Ctrl+R للتحديث السريع', 'font-size: 12px; color: #666;');
+    console.log('%c📷 إنستغرام: @asharalqalb', 'font-size: 14px; color: #e6683c;');
 });
 
 document.addEventListener('keydown', function(e) {
