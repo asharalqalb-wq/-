@@ -200,7 +200,7 @@
         .filter-tag:hover, .filter-tag.active { background: rgba(255,255,255,0.95); color: var(--accent-copper); transform: translateY(-2px); }
         main { max-width: 1200px; margin: 3rem auto; padding: 0 2rem 4rem; }
         .poems-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .poem-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; cursor: pointer; transition: all 0.3s; animation: fadeIn 0.5s ease; }
+        .poem-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; cursor: pointer; transition: all 0.3s; animation: fadeIn 0.5s ease; position: relative; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -221,6 +221,124 @@
         .poem-verse { margin-bottom: 2rem; }
         .close-btn { display: inline-block; margin-top: 1.5rem; padding: 0.8rem 2rem; background: var(--accent-copper); color: #fff; border: none; border-radius: 25px; cursor: pointer; font-family: 'Amiri', serif; font-size: 1rem; transition: all 0.3s; }
         .close-btn:hover { background: var(--accent-gold); transform: translateY(-2px); }
+        
+        /* زر الاقتباسات */
+        .quote-btn {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: var(--accent-sage);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            font-family: 'Amiri', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(10px);
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 5;
+        }
+        .poem-card:hover .quote-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .quote-btn:hover {
+            background: var(--accent-gold);
+            transform: translateY(-2px) scale(1.05);
+        }
+        
+        /* نافذة عرض الاقتباسات المنبثقة */
+        .quotes-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            animation: fadeIn 0.3s ease;
+        }
+        .quotes-content {
+            background: linear-gradient(145deg, #fff8f0, #f9f5f0);
+            border: 2px solid var(--accent-gold);
+            border-radius: 30px;
+            padding: 2.5rem;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            direction: rtl;
+        }
+        .quotes-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-gold);
+        }
+        .quotes-header h3 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.8rem;
+            color: var(--accent-copper);
+            margin: 0;
+        }
+        .close-quotes-btn {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+        .close-quotes-btn:hover {
+            color: var(--accent-copper);
+        }
+        .quote-item {
+            font-family: 'Scheherazade New', serif;
+            font-size: 1.3rem;
+            line-height: 2.2;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: 15px;
+            border-right: 5px solid var(--accent-gold);
+            position: relative;
+        }
+        .quote-item:before {
+            content: '“';
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+            top: -10px;
+            right: 5px;
+        }
+        .quote-item:after {
+            content: '”';
+            font-size: 3rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            position: absolute;
+            bottom: -30px;
+            left: 5px;
+        }
+        .quote-item p {
+            margin: 0;
+        }
+        
         .about-section { background: linear-gradient(135deg, rgba(201,169,97,0.1) 0%, rgba(138,154,123,0.1) 100%); border: 1px solid var(--border-color); border-radius: 15px; padding: 3rem; margin: 4rem 0; position: relative; }
         .about-title { font-family: 'Aref Ruqaa', serif; font-size: 2.5rem; color: var(--accent-copper); margin-bottom: 1.5rem; text-align: center; }
         .about-text { font-family: 'Amiri', serif; font-size: 1.2rem; line-height: 2.2; color: var(--text-primary); text-align: justify; }
@@ -301,6 +419,7 @@
             .refresh-btn { bottom: 1rem; left: 1rem; width: 45px; height: 45px; font-size: 1.2rem; }
             .version-indicator { bottom: 1rem; right: 1rem; font-size: 0.75rem; padding: 0.4rem 0.8rem; }
             .social-links { flex-direction: column; align-items: center; }
+            .quote-btn { opacity: 1; transform: translateY(0); } /* تكون ظاهرة دائمًا على الجوال */
         }
     </style>
 </head>
@@ -984,6 +1103,45 @@ const poems = [
             ["أُشَيِّدُ مِنْ رُفَاتِ الْخَوْفِ مَجْدًا", "يُدَوِّي فِي الزَّمَانِ لَهُ خُشُوعُ"],
             ["أَنَا ابْنُ الْعَاصِفَاتِ إِذَا تَعَالَتْ", "وَفِي صَوْتِي إِذَا هَدَرَتْ رُعُودُ"]
         ]
+    },
+    // القصيدة الجديدة مع الاقتباسات
+    {
+        title: "خلود المجد",
+        category: "حكمية",
+        meter: "الكامل",
+        description: "مجموعة من الاقتباسات الشعرية في الصبر والعزّة والإيمان.",
+        verses: [
+            ["أحيا كأنَّ خلودَ المجدِ غايتي", "وأموتُ إن متُّ حرًّا غيرَ مُنكسِرِ"],
+            ["ما خابَ من جعلَ التقوى سفينتَهُ", "في بحرِ دنيا مليءٍ بالخطَرِ."],
+            ["يا نفسُ صبرًا فإن الصبرَ معركةٌ", "يُبنى بها المجدُ لا يُهدى ولا يُشترى"],
+            ["إن انحنى ظهرُكَ المثخونُ من تَعَبٍ", "فاقمْ فإنَّ العُلا لا تُؤتَى للكسرا."],
+            ["ما خِفتُ يومًا طريقًا لا دليلَ لهُ", "فاللهُ يرسمُ في ظلمائِهِ الأثَرُ"],
+            ["إن ضلَّ دربي فحسبي أنَّ لي أملاً", "كالنجمِ يبقى ولو واراهُ مُنحدِرُ."],
+            ["أنا ابنُ صمتي، وصمتي ليسَ من ضعَفٍ", "بل في السكونِ انكسارُ الصوتِ يَنكَسِرُ"],
+            ["إن شئتُ أطلقتُ إعصارًا من الكلماتِ", "تَهوي بهِ القمَمُ الشمّاءُ والحُفَرُ."],
+            ["كم مرَّ بي اليأسُ يبغي كسرَ أجنحتي", "فكنتُ أطوي جناحيهِ وأنتصرُ"],
+            ["ما ماتَ حلمي وإن طالَتْ مآسِيَهُ", "الحلمُ يُبعثُ إن في القلبِ مُستعِرُ."],
+            ["أمشي وحولي جدارُ الصمتِ مُرتفعٌ", "وفي دمي صرخةُ الأحرارِ في السَّحَرِ"],
+            ["إن ضاقَ صدري فصدري موطنُ أملي", "وفي ضلوعي سماءُ العزمِ والفِكَرِ."],
+            ["يا قلبُ لا تنحني والريحُ عاصفةٌ", "فالنخلُ يُثمرُ رغمَ الريحِ والمطرِ"],
+            ["إن خيَّبَ الناسُ ظنًّا في مودَّتِهم", "فاللهُ يكفيكَ نورًا دائمَ الظَّفَرِ."],
+            ["أُحِبُّ حبًّا إذا ما مسَّهُ قَدَرٌ", "صارَ الوفاءُ لهُ درعًا ومُدَّخَرُ"],
+            ["ما كانَ عشقي هوىً عابرًا خَجِلاً", "بل كانَ نارًا بها الأرواحُ تَعتصِرُ."],
+            ["إنِّي سكنتُ جراحِي لا أُساوِمُها", "فالجرحُ إن صَبَرَ الإنسانُ يزدهرُ"],
+            ["أبني من الوجعِ الأقصى مآذنَهُ", "حتى يؤذِّنَ في أعماقيَ القَدَرُ."],
+            ["أنا الذي كسرتْهُ الريحُ مُنذُ صِغًا", "لكنَّهُ قامَ كالإعصارِ في الكِبَرِ"],
+            ["ما عادَ يخشى ظلامًا في مسالكِه", "فالخوفُ يموتُ إذا ما وُلدَ الظَّفَرُ."],
+            ["يا ليلُ مهلاً فقلبي لا يلينُ أسًى", "في داخلي شمسُ إيمانٍ بلا كَدَرِ"],
+            ["إن طالَ حزني فحُزني لي مُعلِّمُهُ", "علّمني كيفَ أبني الحُلمَ من كَسَرِ."],
+            ["ما كنتُ أركنُ للأيامِ إن عبستْ", "فالعزمُ مركبيَ الميمونُ في السَّفَرِ"],
+            ["أمضي ولو أنَّ دربي كلَّهُ لَهَبٌ", "فالوردُ يولدُ أحيانًا من الشَّرَرِ."],
+            ["أخفي اشتعالي وفي عينيَّ ملحمةٌ", "كأنَّ في القلبِ تاريخًا من السُّوَرِ"],
+            ["إن غابَ صوتي فصمتي في الكُرى صَرَخٌ", "وإن نطقتُ فحرفي زلزلةُ الحَجَرِ."],
+            ["أنا الذي إن مشيتُ الأرضَ تتبعُني", "خطايَ، كالفجرِ إذ يمضي وينتشرُ"],
+            ["ما هزَّني الهمُّ يومًا في مواجعِه", "فالهمُّ يعرفُ أني الصبرُ والظَّفَرُ."],
+            ["أُعاتِبُ الدهرَ لا شَكوى ولا جَزَعًا", "فالدهرُ يَخضعُ أحيانًا لِمَن صَبَرا"],
+            ["ما ضاقَ صدرِي إذا ما الريحُ عاتيةٌ", "فالريحُ تعلَمُ أنّ الجبلَ ما انكسرا."]
+        ]
     }
 ];
 
@@ -1016,10 +1174,11 @@ function renderPoems(poemsToRender) {
             <p class="poem-description">${poem.description}</p>
             <div class="poem-preview">${firstVerse[0]}<br>${firstVerse[1]}</div>
             <div class="poem-full-text">${versesHTML}<button class="close-btn" onclick="closePoem(this)">إغلاق القصيدة</button></div>
+            <button class="quote-btn" onclick="showQuotes(this, '${poem.title}')" title="عرض اقتباسات من القصيدة">📜 اقتباسات</button>
         `;
         
         card.addEventListener('click', function(e) {
-            if (!e.target.classList.contains('close-btn')) {
+            if (!e.target.classList.contains('close-btn') && !e.target.classList.contains('quote-btn')) {
                 togglePoem(this);
             }
         });
@@ -1034,6 +1193,48 @@ function renderPoems(poemsToRender) {
     
     // تحديث Schema للقصائد المعروضة
     updatePoemsSchema(poemsToRender);
+}
+
+// دالة عرض الاقتباسات
+function showQuotes(button, poemTitle) {
+    // منع انتشار الحدث حتى لا يتم فتح القصيدة
+    event.stopPropagation();
+    
+    // البحث عن القصيدة المطلوبة (يفترض أنها آخر قصيدة "خلود المجد")
+    const poem = poems.find(p => p.title === poemTitle);
+    if (!poem) return;
+    
+    // تجميع كل الأبيات في مصفوفة واحدة
+    const allLines = poem.verses.flat();
+    
+    // إنشاء نافذة الاقتباسات المنبثقة
+    const modal = document.createElement('div');
+    modal.className = 'quotes-modal';
+    modal.onclick = function(e) {
+        if (e.target === modal) modal.remove();
+    };
+    
+    // بناء محتوى الاقتباسات
+    let quotesHTML = '';
+    allLines.forEach((line, index) => {
+        quotesHTML += `
+            <div class="quote-item">
+                <p>${line}</p>
+            </div>
+        `;
+    });
+    
+    modal.innerHTML = `
+        <div class="quotes-content">
+            <div class="quotes-header">
+                <h3>اقتباسات من "${poemTitle}"</h3>
+                <button class="close-quotes-btn" onclick="this.closest('.quotes-modal').remove()">×</button>
+            </div>
+            ${quotesHTML}
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
 }
 
 function togglePoem(card) {
@@ -1152,6 +1353,10 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         const expanded = document.querySelector('.poem-card.expanded');
         if (expanded) expanded.classList.remove('expanded');
+        
+        // إغلاق نافذة الاقتباسات إذا كانت مفتوحة
+        const modal = document.querySelector('.quotes-modal');
+        if (modal) modal.remove();
     }
     if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
         e.preventDefault();
