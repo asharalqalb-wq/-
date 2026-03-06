@@ -8,17 +8,13 @@
     <meta name="version" content="20260301204948">
     
     <title>نبيل جبر أشعار القلب | ديوان نبيل جبر - مجموعة شعرية</title>
-    <meta name="description" content="ديوان نبيل جبر - أشعار القلب: مجموعة شعرية للشاعر نبيل جبر (@ash3ar_alqalb) تضم 42 قصيدة وطنية وغزلية وحكمية. تابعني على إنستغرام: نبيل جبر أشعار القلب">
-    <meta name="keywords" content="نبيل جبر, أشعار القلب, ديوان نبيل جبر, شعر عربي, قصائد, ash3ar_alqalb">
+    <meta name="description" content="ديوان نبيل جبر - أشعار القلب: مجموعة شعرية للشاعر نبيل جبر (@ash3ar_alqalb) تضم 42 قصيدة وطنية وغزلية وحكمية">
+    <meta name="keywords" content="نبيل جبر, أشعار القلب, ديوان نبيل جبر, شعر عربي, قصائد">
     <meta name="author" content="نبيل جبر | أشعار القلب">
     
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ash3ar-alqalb.github.io/">
     <meta property="og:title" content="نبيل جبر أشعار القلب | ديوان شعري">
     <meta property="og:description" content="42 قصيدة وطنية وغزلية وحكمية للشاعر نبيل جبر">
-    
-    <link rel="canonical" href="https://ash3ar-alqalb.github.io/">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📜</text></svg>?v=20260301204948">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -163,8 +159,42 @@
             to { opacity: 1; transform: translateY(0); }
         }
         .poem-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px var(--shadow-heavy); }
-        .poem-title { font-family: 'Aref Ruqaa', serif; font-size: 1.8rem; color: var(--accent-copper); margin-bottom: 0.8rem; }
-        .poem-tag { background: var(--accent-sage); color: #fff; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-family: 'Amiri', serif; margin-right: 0.5rem; display: inline-block; margin-bottom: 0.3rem; }
+        
+        .poem-title-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .poem-title {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 1.8rem;
+            color: var(--accent-copper);
+            margin: 0;
+        }
+        .title-explain-btn {
+            padding: 0.4rem 1rem;
+            background: var(--accent-sage);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Amiri', serif;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            white-space: nowrap;
+        }
+        .title-explain-btn:hover {
+            background: #738463;
+            transform: translateY(-2px);
+        }
+        
+        .poem-tag { background: var(--accent-sage); color: #fff; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.85rem; font-family: 'Amiri', serif; margin-left: 0.5rem; margin-right: 0; display: inline-block; margin-bottom: 0.3rem; }
         .poem-description { font-family: 'Amiri', serif; font-size: 0.95rem; color: var(--text-secondary); margin: 1rem 0; line-height: 1.8; }
         .poem-preview { font-family: 'Scheherazade New', serif; font-size: 1.1rem; line-height: 2.2; color: var(--text-primary); border-right: 3px solid var(--accent-gold); padding-right: 1rem; margin-top: 1rem; font-style: italic; }
         .poem-full-text { display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px dashed var(--border-color); }
@@ -332,6 +362,8 @@
             .main-quote-btn { font-size: 1.2rem; padding: 1rem 1.5rem; }
             .quotes-content { padding: 1.5rem; }
             .quote-item { font-size: 1.2rem; padding: 1rem; }
+            .poem-title-container { flex-direction: column; align-items: flex-start; }
+            .title-explain-btn { align-self: flex-start; }
         }
     
         .poem-actions {
@@ -503,7 +535,7 @@
     </footer>
     
     <script>
-        // قائمة الاقتباسات الكاملة (30 بيت - 15 اقتباس كل اقتباس بيتين)
+        // قائمة الاقتباسات
         const allQuotes = [
             ["أحيا كأنَّ خلودَ المجدِ غايتي", "وأموتُ إن متُّ حرًّا غيرَ مُنكسِرِ"],
             ["ما خابَ من جعلَ التقوى سفينتَهُ", "في بحرِ دنيا مليءٍ بالخطَرِ."],
@@ -545,7 +577,6 @@
             };
             
             let quotesHTML = '';
-            // عرض كل اقتباس (بيتين) بشكل منفصل
             for (let i = 0; i < allQuotes.length; i += 2) {
                 if (i + 1 < allQuotes.length) {
                     quotesHTML += `
@@ -1211,7 +1242,10 @@
                 ).join('');
                 
                 card.innerHTML = `
-                    <h3 class="poem-title">${poem.title}</h3>
+                    <div class="poem-title-container">
+                        <h3 class="poem-title">${poem.title}</h3>
+                        <button class="title-explain-btn" onclick="event.stopPropagation(); showExplanation('${poem.title}')">📚 شرح القصيدة</button>
+                    </div>
                     <div>
                         <span class="poem-tag">${poem.category}</span>
                         <span class="poem-tag">بحر ${poem.meter}</span>
@@ -1221,14 +1255,13 @@
                     <div class="poem-full-text">
                         ${versesHTML}
                         <div class="poem-actions">
-                            <button class="explain-btn" onclick="showExplanation('${poem.title}')">شرح القصيدة</button>
                             <button class="close-btn" style="margin-top: 0;" onclick="closePoem(this)">إغلاق القصيدة</button>
                         </div>
                     </div>
                 `;
                 
                 card.addEventListener('click', function(e) {
-                    if (!e.target.classList.contains('close-btn')) {
+                    if (!e.target.classList.contains('close-btn') && !e.target.classList.contains('title-explain-btn')) {
                         togglePoem(this);
                     }
                 });
@@ -1254,94 +1287,44 @@
             }
         }
 
-        
-        const poemExplanations = {
-            "راية المجد": {
-                text: "تتغنى هذه القصيدة بحب الوطن وعزة الانتماء إليه. يصور الشاعر نفسه كحارس يحمل على عاتقه أحلام وطنه وتاريخه العريق. يؤكد على أهمية الصمود والإرادة في مواجهة الصعاب، مشبهاً الرجال الأقوياء بالجبال الشامخة التي لا تنحني للعواصف، ومستعداً للدفاع عن كرامة الوطن بدمه وقلمه.",
-                meanings: [
-                    { word: "أُشيّد", meaning: "أبني وأرفع" },
-                    { word: "عارض", meaning: "مانع أو مصيبة طارئة" },
-                    { word: "الإقدام", meaning: "الشجاعة والتقدم بلا خوف" }
-                ]
-            },
-            "بين يديكِ العمر": {
-                text: "قصيدة غزلية رقيقة تعبر عن الحب الصادق والعميق. يرى الشاعر في محبوبته النور الذي يضيء حياته ويبدد عتمتها، ويعتبر حبها ملاذاً ودفئاً يخلصه من قسوة الأيام وبرد الوحدة. يطلب منها أن تحتويه وأن يكون حبهما وعداً دائماً لا ينقطع.",
-                meanings: [
-                    { word: "سنا", meaning: "ضوء ساطع" },
-                    { word: "اعتراه", meaning: "أصابه وغشيه" },
-                    { word: "دفوك", meaning: "الدفء النابع منك" }
-                ]
-            },
-            "حكمة الغروب": {
-                text: "تتأمل القصيدة في مرور الزمن مستوحية الحكمة من مشهد الغروب. تدعو الإنسان لاستغلال وقته في عمل الخير وعدم الركون لليأس، فالشمس تغيب لتشرق من جديد في دورة حياة مستمرة. وتؤكد على أن الصبر مفتاح الفرج وأن الصبح سيأتي مهما طال ليل الانتظار.",
-                meanings: [
-                    { word: "الأفول", meaning: "الغياب والغروب" },
-                    { word: "تطاولت", meaning: "امتدت وطالت مدتها" }
-                ]
-            },
-            "أنين المسافات": {
-                text: "تعبر هذه القصيدة عن ألم الفراق ولوعة الاشتياق. يشكو الشاعر لليل من بعد المسافات، ويبحث في صوت الرياح عن خبر يطفئ نار الشوق. يعيش حالة من الحنين المقيد، متمنياً عودة اللقاء ليثبت أن صبره كان عهداً ورباطاً قوياً لحبه.",
-                meanings: [
-                    { word: "نطاق", meaning: "حزام أو قيد يحيط بالشيء" },
-                    { word: "وثاق", meaning: "عهد ورباط قوي" }
-                ]
-            },
-            "نشيد العدل": {
-                text: "قصيدة ثورية تنادي برفع الظلم والدفاع عن الحق والكرامة. يرفض الشاعر الاستسلام والرضوخ للقيود، ويؤكد أن الإرادة القوية والإيمان هما السلاح لمواجهة الطغيان وصنع فجر جديد من رحم المعاناة.",
-                meanings: [
-                    { word: "الدجى", meaning: "الظلام الشديد" },
-                    { word: "يستكين", meaning: "يخضع ويذل" }
-                ]
-            },
-            "خُطى الفجر": {
-                text: "دعوة صريحة للتفاؤل وعدم الاستسلام لليأس والظلام. الفجر في القصيدة يمثل الأمل الذي يأتي بعد طول انتظار، والليل يمثل المحن التي لا بد أن تنجلي. الشاعر يشجع على الإرادة القوية التي تبدد الخوف كالفجر الذي يمحو العتمة.",
-                meanings: [
-                    { word: "أرخى ستور", meaning: "أسدل ظلامه وغطى الكون" },
-                    { word: "بارق", meaning: "ضوء يلمع ويبشر بالأمل" }
-                ]
-            },
-            "رجفة قلب": {
-                text: "يصف الشاعر في هذه القصيدة حالة الارتباك والدهشة التي تصيب قلبه عند رؤية طيف المحبوبة. يشعر بأن عيونها بحر يغرق فيه العاشق ولا يجد سبيلاً للنجاة سوى الاستسلام لهذا الحب الجميل الذي يحيي قلبه.",
-                meanings: [
-                    { word: "يدريه", meaning: "يعلمه أو يدركه" },
-                    { word: "تسليه", meaning: "تخفيف ونسيان للهموم" }
-                ]
-            },
-            "درب الصابرين": {
-                text: "قصيدة تحفيزية تؤكد على أهمية الصبر والمثابرة في طريق تحقيق الأهداف. تشير إلى أن المجد لا يُنال بالراحة والأحلام الموهومة، بل بالعمل الجاد، وتحدي الصعاب، والصبر على المحن والأزمات.",
-                meanings: [
-                    { word: "الخُطُب", meaning: "المصائب والأمور العظيمة" },
-                    { word: "الحُقُب", meaning: "الأزمنة والفترات الطويلة" }
-                ]
-            },
-            "سكون المساء": {
-                text: "تصف القصيدة حالة من الهدوء النفسي والسكينة التي يجدها الشاعر في سكون الليل والمساء. يبتعد الشاعر عن ضجيج الحياة وزحامها ليصفي روحه، ويتأمل في الطبيعة التي تشاركه هذا الصمت العميق والجميل.",
-                meanings: [
-                    { word: "يُناجي", meaning: "يحدّث سراً بصوت خافت" },
-                    { word: "الغمام", meaning: "السحاب" }
-                ]
-            },
-            "على قمم العزم": {
-                text: "قصيدة حماسية تدعو للصمود والإرادة الصلبة كالسنديان الذي لا تهزه الرياح. الشموخ والعزة ورفض الخضوع هي الطريق الوحيد للأحرار لصناعة مجد لا يُنسى وكتابة قصة نجاح تخلد عبر الزمن.",
-                meanings: [
-                    { word: "السنديان", meaning: "شجر صلب وقوي جداً" },
-                    { word: "الأزل", meaning: "القدم أو الخلود الذي لا بداية له" }
-                ]
-            },
-            "على قبر الغياب": {
-                text: "مرثية حزينة تعبر عن الألم العميق لفقدان شخص عزيز. يصف الشاعر قلبه بالكسير والمعذب، ويشكو من صعوبة الصبر بعد هذا الفراق، لكنه يؤكد أن الذكريات الجميلة تبقى حية لا تموت رغم الغياب.",
-                meanings: [
-                    { word: "الكسير", meaning: "المجروح والمكسور حزناً" },
-                    { word: "معذب", meaning: "يعاني من شدة الألم" }
-                ]
-            }
-        };
-
+        // دالة شرح القصائد بالعربية الفصحى
         function showExplanation(title) {
-            let exp = poemExplanations[title];
+            const explanations = {
+                "راية المجد": {
+                    text: `هذه القصيدة من بحر الكامل، يقول الشاعر نبيل جبر - رعاه الله - يصف فيها حبه لوطنه وتعلقه به، ويشبه نفسه بالحارس الأمين الذي يحمل على كتفيه أحلام وطنه وتاريخ أجداده. 
+                    ويؤكد الشاعر على أن الرجال الأقوياء لا تلين لهم قناة ولا تنحني لهم هامة، فهم كالجبال الراسيات لا تزعزعها العواصف. 
+                    ويختم قصيدته بتأكيد استعداده للتضحية بدمه وقلمه في سبيل رفعة الوطن وكرامته.`,
+                    meanings: [
+                        { word: "أُشيّد", meaning: "أبني وأرفع وأقيم" },
+                        { word: "عارض", meaning: "ما يعترض الطريق من مصائب ونوائب" },
+                        { word: "الإقدام", meaning: "الشجاعة والتقدم دون خوف أو تردد" }
+                    ]
+                },
+                "بين يديكِ العمر": {
+                    text: `يقول الشاعر في هذه القصيدة الغزلية الرقيقة يخاطب محبوبته، فيرى في وجهها النور الساطع الذي يضيء له الحياة، ويشعر بأن وجودها يبدد وحشته ويذهب برده. 
+                    ويصفها بأنها أنشودة قلبه التي يلجأ إليها كلما ضاق به الزمان، ويطلب منها أن تحتضنه ليذوب برد الوحدة عند دفء حبها.`,
+                    meanings: [
+                        { word: "سنا", meaning: "الضوء الساطع اللامع" },
+                        { word: "اعتراه", meaning: "أصابه وغشيه وعلاه" },
+                        { word: "دفوك", meaning: "الدفء النابع منك والحنان" }
+                    ]
+                },
+                "حكمة الغروب": {
+                    text: `يتأمل الشاعر في هذه القصيدة الحكمية مشهد الغروب، فيرى فيه درساً بليغاً في تقلب الزمن ومرور الأيام. فالنهار يمضي كما يمضي العمر ولا يمكن استعادته، والشمس تغيب لتشرق من جديد في دورة حياة لا تنتهي. 
+                    ويدعو الشاعر الإنسان إلى اغتنام وقته في عمل الخير، فالإنسان يحصد ما يزرع، ويؤكد أن الصبر مفتاح الفرج، فكما يأتي الصبح بعد الليل، يأتي الفرج بعد الشدة.`,
+                    meanings: [
+                        { word: "الأفول", meaning: "الغياب والغروب والاختفاء" },
+                        { word: "تطاولت", meaning: "امتدت وطالت مدتها" }
+                    ]
+                }
+            };
+
+            let exp = explanations[title];
             if (!exp) {
                 exp = {
-                    text: "هذه القصيدة من إبداعات الشاعر نبيل جبر التي تحمل معاني عميقة ومشاعر صادقة تلامس القلوب، وتتزين بصور بلاغية رائعة تعكس تجربة الشاعر.",
+                    text: `هذه القصيدة من روائع الشاعر نبيل جبر، نظمها على أحد البحور الشعرية الأصيلة، وجاءت كلماتها جزلة محكمة، ومعانيها عميقة سامية. 
+                    يصور الشاعر في هذه القصيدة مشاعره وأحاسيسه بصدق وأمانة، مستخدماً الصور البلاغية الموحية والألفاظ المعبرة. 
+                    والقصيدة تحمل في طياتها حكماً وعبراً، وتدعو إلى التأمل والتفكر في أحوال الزمن وتقلباته.`,
                     meanings: []
                 };
             }
@@ -1355,20 +1338,20 @@
             let meaningsHtml = '';
             if (exp.meanings.length > 0) {
                 meaningsHtml = '<div class="meanings-box">' +
-                               '<h4>معاني المفردات:</h4>' +
+                               '<h4>🔹 معاني المفردات 🔹</h4>' +
                                '<ul class="meanings-list">' +
-                               exp.meanings.map(function(m) { return '<li><strong>' + m.word + ':</strong> ' + m.meaning + '</li>'; }).join('') +
+                               exp.meanings.map(function(m) { return '<li><strong>' + m.word + ' : </strong> ' + m.meaning + '</li>'; }).join('') +
                                '</ul>' +
                                '</div>';
             }
 
             modal.innerHTML = '<div class="explanation-content">' +
                               '<div class="explanation-header">' +
-                              '<h3>شرح قصيدة: ' + title + '</h3>' +
-                              '<button class="close-quotes-btn" onclick="this.closest(\' .explanation-modal\').remove()">×</button>' +
+                              '<h3>📖 شرح قصيدة: ' + title + '</h3>' +
+                              '<button class="close-quotes-btn" onclick="this.closest(\'.explanation-modal\').remove()">×</button>' +
                               '</div>' +
                               '<div class="explanation-body">' +
-                              '<p>' + exp.text + '</p>' +
+                              '<p style="font-size:1.3rem; line-height:2.2; text-align:justify;">' + exp.text + '</p>' +
                               meaningsHtml +
                               '</div>' +
                               '</div>';
@@ -1433,7 +1416,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             renderPoems(poems);
             console.log('%c✅ ديوان نبيل جبر - أشعار القلب', 'font-size: 20px; font-weight: bold; color: #b87333;');
-            console.log('%c📊 عدد القصائد: ' + poems.length, 'font-size: 14px; color: #5a4a3a;');
         });
 
         document.addEventListener('keydown', function(e) {
@@ -1444,13 +1426,10 @@
             if (e.key === 'Escape') {
                 const expanded = document.querySelector('.poem-card.expanded');
                 if (expanded) expanded.classList.remove('expanded');
-                
                 const modal = document.querySelector('.quotes-modal');
                 if (modal) modal.remove();
-            }
-            if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
-                e.preventDefault();
-                searchInput.focus();
+                const expModal = document.querySelector('.explanation-modal');
+                if (expModal) expModal.remove();
             }
         });
 
