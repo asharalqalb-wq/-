@@ -34,6 +34,9 @@
             --border-color: #d4c4b0;
             --shadow: rgba(45, 24, 16, 0.1);
             --shadow-heavy: rgba(45, 24, 16, 0.2);
+            --royal-blue: #1a2a3a;      /* كحلي ملكي */
+            --golden-border: #c9a961;    /* ذهبي */
+            --white-text: #ffffff;        /* أبيض فاخر */
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Scheherazade New', serif; background: var(--bg-primary); color: var(--text-primary); line-height: 2; overflow-x: hidden; }
@@ -153,12 +156,42 @@
         }
         
         .poems-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; margin-top: 2rem; }
-        .poem-card { background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: 12px; padding: 2rem; cursor: pointer; transition: all 0.3s; animation: fadeIn 0.5s ease; }
+        
+        /* التصميم العام للقصائد */
+        .poem-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            animation: fadeIn 0.5s ease;
+        }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .poem-card:hover { transform: translateY(-8px); box-shadow: 0 12px 40px var(--shadow-heavy); }
+        
+        /* التصميم الخاص لقصيدة صالح الجعفراوي */
+        .poem-card-special {
+            background: var(--royal-blue) !important;
+            border: 3px solid var(--golden-border) !important;
+            color: var(--white-text) !important;
+        }
+        .poem-card-special .poem-title {
+            color: var(--accent-gold) !important;
+            text-shadow: 0 0 8px rgba(255,215,0,0.5) !important;
+        }
+        .poem-card-special .poem-description,
+        .poem-card-special .poem-preview,
+        .poem-card-special .poem-line,
+        .poem-card-special .poem-tag {
+            color: var(--white-text) !important;
+        }
+        .poem-card-special .poem-tag {
+            background: rgba(255,255,255,0.2) !important;
+        }
         
         .poem-title-container {
             display: flex;
@@ -171,13 +204,12 @@
         .poem-title {
             font-family: 'Aref Ruqaa', serif;
             font-size: 1.8rem;
-            color: var(--accent-gold); /* ذهبي */
+            color: var(--accent-copper);
             margin: 0;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
         .title-explain-btn {
             padding: 0.4rem 1rem;
-            background: #1a2a3a; /* كحلي ملكي غامق */
+            background: #1a2a3a;
             color: #fff;
             border: none;
             border-radius: 25px;
@@ -1299,6 +1331,10 @@
             poemsToRender.forEach((poem, index) => {
                 const card = document.createElement('div');
                 card.className = 'poem-card';
+                // أضف كلاس خاص لأول قصيدة (صالح الجعفراوي)
+                if (poem.title === "صالح الجعفراوي") {
+                    card.classList.add('poem-card-special');
+                }
                 card.style.animationDelay = `${index * 0.05}s`;
                 
                 const firstVerse = poem.verses[0];
