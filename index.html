@@ -38,30 +38,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Scheherazade New', serif; background: var(--bg-primary); color: var(--text-primary); line-height: 2; overflow-x: hidden; }
         
-        /* التصميم الملكي الخاص بقصيدة صالح الجعفراوي */
-        .royal-poem {
-            background: linear-gradient(145deg, #0f172a, #1e293b);
-            border: 3px solid #d4af37;
-            border-radius: 20px;
-            padding: 35px;
-            margin: 40px 0;
-            text-align: center;
-            color: #f8f8f8;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .royal-poem h2 {
-            color: #ffd700;
-            font-size: 30px;
-            margin-bottom: 20px;
-            font-family: 'Aref Ruqaa', serif;
-        }
-        .royal-poem p {
-            font-size: 20px;
-            line-height: 2.2;
-            font-family: 'Scheherazade New', serif;
-            white-space: pre-line; /* للحفاظ على فواصل الأسطر */
-        }
-        
         .update-bar {
             background: linear-gradient(90deg, var(--accent-copper), var(--accent-gold));
             color: white;
@@ -693,7 +669,7 @@
             ["أمضي ولو أنَّ دربي كلَّهُ لَهَبٌ", "فالوردُ يولدُ أحيانًا من الشَّرَرِ."],
             ["أخفي اشتعالي وفي عينيَّ ملحمةٌ", "كأنَّ في القلبِ تاريخًا من السُّوَرِ"],
             ["إن غابَ صوتي فصمتي في الكُرى صَرَخٌ", "وإن نطقتُ فحرفي زلزلةُ الحَجَرِ."],
-            ["أنا الذي إن مشيتُ الأرضُ تتبعُني", "خطايَ، كالفجرِ إذ يمضي وينتشرُ"],
+            ["أنا الذي إن مشيتُ الأرضَ تتبعُني", "خطايَ، كالفجرِ إذ يمضي وينتشرُ"],
             ["ما هزَّني الهمُّ يومًا في مواجعِه", "فالهمُّ يعرفُ أني الصبرُ والظَّفَرُ."],
             ["أُعاتِبُ الدهرَ لا شَكوى ولا جَزَعًا", "فالدهرُ يَخضعُ أحيانًا لِمَن صَبَرا"],
             ["ما ضاقَ صدرِي إذا ما الريحُ عاتيةٌ", "فالريحُ تعلَمُ أنّ الجبلَ ما انكسرا."]
@@ -1428,28 +1404,9 @@
                 card.style.animationDelay = `${index * 0.05}s`;
                 
                 const firstVerse = poem.verses[0];
-                
-                // بناء محتوى النص الكامل حسب القصيدة
-                let fullTextHTML = '';
-                if (poem.title === "صالح الجعفراوي") {
-                    // تصميم ملكي خاص
-                    let versesText = '';
-                    poem.verses.forEach(verse => {
-                        versesText += verse[0] + '<br>' + verse[1] + '<br>';
-                    });
-                    fullTextHTML = `
-                        <div class="royal-poem">
-                            <h2>قصيدة صالح الجعفراوي</h2>
-                            <p>${versesText}</p>
-                        </div>
-                    `;
-                } else {
-                    // التصميم العادي
-                    const versesHTML = poem.verses.map(verse => 
-                        `<div class="poem-verse">${verse.map(line => `<div class="poem-line">${line}</div>`).join('')}</div>`
-                    ).join('');
-                    fullTextHTML = versesHTML;
-                }
+                const versesHTML = poem.verses.map(verse => 
+                    `<div class="poem-verse">${verse.map(line => `<div class="poem-line">${line}</div>`).join('')}</div>`
+                ).join('');
                 
                 card.innerHTML = `
                     <div class="poem-title-container">
@@ -1463,7 +1420,7 @@
                     <p class="poem-description">${poem.description}</p>
                     <div class="poem-preview">${firstVerse[0]}<br>${firstVerse[1]}</div>
                     <div class="poem-full-text">
-                        ${fullTextHTML}
+                        ${versesHTML}
                         <div class="poem-actions">
                             <button class="close-btn" style="margin-top: 0;" onclick="closePoem(this)">إغلاق القصيدة</button>
                         </div>
